@@ -35,27 +35,27 @@ LOGS_SUBFOLDER = 'LOGS'
 LOG_FILENAME = 'csv_sorter'
 
 # Имена входных файлов (без расширения .csv)
-INPUT_FILES = ['file1', 'file2']
+INPUT_FILES = ['CONTEST-DATA (PROM) 2025-08-04', 'CONTEST-DATA (PROM) 2025-07-24 v4']
 
 # Настройки сортировки
 SORT_CONFIG = {
-    'delimiter': ',',  # Разделитель CSV файла
+    'delimiter': ';',  # Разделитель CSV файла (точка с запятой для ваших файлов)
     'fields': [
         {
-            'name': 'department',      # Имя поля для сортировки
+            'name': 'CONTEST_CODE',      # Имя поля для сортировки
             'type': 'text',            # Тип поля: 'auto', 'text', 'number', 'date'
             'order': 'asc'             # Порядок сортировки: 'asc' (возрастание), 'desc' (убывание)
-        },
-        {
-            'name': 'salary',          # Имя поля для сортировки
-            'type': 'number',          # Тип поля: 'auto', 'text', 'number', 'date'
-            'order': 'desc'            # Порядок сортировки: 'asc' (возрастание), 'desc' (убывание)
-        },
-        {
-            'name': 'hire_date',       # Имя поля для сортировки
-            'type': 'date',            # Тип поля: 'auto', 'text', 'number', 'date'
-            'order': 'asc'             # Порядок сортировки: 'asc' (возрастание), 'desc' (убывание)
         }
+#        {
+#            'name': 'salary',          # Имя поля для сортировки
+#            'type': 'number',          # Тип поля: 'auto', 'text', 'number', 'date'
+#            'order': 'desc'            # Порядок сортировки: 'asc' (возрастание), 'desc' (убывание)
+#        },
+#        {
+#            'name': 'hire_date',       # Имя поля для сортировки
+#            'type': 'date',            # Тип поля: 'auto', 'text', 'number', 'date'
+#            'order': 'asc'             # Порядок сортировки: 'asc' (возрастание), 'desc' (убывание)
+#        }
     ],
     'order': 'asc'  # Общий порядок сортировки (если не указан для конкретного поля)
 }
