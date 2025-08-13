@@ -35,14 +35,14 @@ LOGS_SUBFOLDER = 'LOGS'
 LOG_FILENAME = 'csv_sorter'
 
 # Имена входных файлов (без расширения .csv)
-INPUT_FILES = ['CONTEST-DATA (PROM) 2025-08-04', 'CONTEST-DATA (PROM) 2025-07-24 v4']
+INPUT_FILES = ['REWARD (PROM) 2025-08-07 — копия(Клара)', 'REWARD (PROM) 2025-07-24 v1']
 
 # Настройки сортировки
 SORT_CONFIG = {
     'delimiter': ';',  # Разделитель CSV файла (точка с запятой для ваших файлов)
     'fields': [
         {
-            'name': 'CONTEST_CODE',      # Имя поля для сортировки
+            'name': 'REWARD_CODE',      # Имя поля для сортировки
             'type': 'text',            # Тип поля: 'auto', 'text', 'number', 'date'
             'order': 'asc'             # Порядок сортировки: 'asc' (возрастание), 'desc' (убывание)
         }
@@ -432,14 +432,13 @@ class CSVSorter:
             # Записываем информацию о сортировке
             self.logger.info(f"Данные отсортированы. Порядок: {'убывание' if reverse else 'возрастание'}")
             
-            # Записываем отсортированный файл
+            # Записываем отсортированный файл, сохраняя исходное форматирование
             with open(output_file, 'w', encoding='utf-8', newline='') as f:
-                # Создаем CSV writer с тем же разделителем
-                writer = csv.writer(f, delimiter=sort_config['delimiter'])
-                # Записываем заголовок
-                writer.writerow(header)
-                # Записываем отсортированные данные
-                writer.writerows(sorted_data)
+                # Записываем заголовок как есть
+                f.write(sort_config['delimiter'].join(header) + '\n')
+                # Записываем отсортированные данные как есть
+                for row in sorted_data:
+                    f.write(sort_config['delimiter'].join(row) + '\n')
                 
             self.logger.info(f"Отсортированный файл сохранен: {output_file}")
             
